@@ -7,18 +7,33 @@
         mc:Ignorable="d"
         Title="ItemDialog" Height="450" Width="800">
 
-    <Grid x:Name="mainGrid">
+    <Grid x:Name="mainGrid" ShowGridLines="True">
 
 
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button />
+        
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"> </ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="addButton" Content="Add" Grid.Column="0" Grid.Row="1"></Button>
+            <Button x:Name="cancel" Content="Cancel" Grid.Column="1" Grid.Row="1"></Button>
+
+        </Grid>
+        
+        
+        
     </Grid>
 
 

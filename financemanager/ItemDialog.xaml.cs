@@ -23,8 +23,10 @@ namespace financemanager
         {
             InitializeComponent();
         }
-        public void addContent(string contentname) { 
-           
+        public void AddContent(string contentname){
+            TextBox newText = new TextBox();
+            newText.Text = contentname;
+            this.mainGrid.Children.Add(newText);
         }
         
         private void Add_Item_Button_Click(object sender, RoutedEventArgs e)
@@ -36,5 +38,13 @@ namespace financemanager
         {
 
         }
-    } 
+    }
+
+    public partial class AddItemDialog : ItemDialog {
+        public AddItemDialog() {
+            InitializeComponent();
+        }
+    }
+
+    
 }

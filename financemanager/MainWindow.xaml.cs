@@ -27,7 +27,9 @@ namespace financemanager
 
         private void Add_Year_Button_Click(object sender, RoutedEventArgs e)
         {
-            ItemDialog addYearDialog = new ItemDialog();
+            AddItemDialog addYearDialog = new AddItemDialog();
+            addYearDialog.AddContent("hello");
+            addYearDialog.AddContent("Hello");
             addYearDialog.Show();
         }
 
