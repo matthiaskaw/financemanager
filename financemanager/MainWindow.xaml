@@ -34,27 +34,30 @@
             <TextBlock x:Name="status_text" Text="Ready" ></TextBlock>
             <ProgressBar x:Name="progress_bar" Visibility="Collapsed"></ProgressBar>
         </StatusBar>
-        
-        
-        <Grid x:Name="mainGridLayout" DockPanel.Dock="Bottom">
 
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"   />
-                <RowDefinition Height = "*"  />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
-            <ListBox x:Name="Year_List_Box" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="5"></ListBox>
-            <StackPanel x:Name="Button_Stack_Panel" Grid.Row="0" Grid.Column="1" Margin="5">
-                <Button x:Name="Add_Year_Button" Content="Add Year" Margin="5" Click="Add_Year_Button_Click"></Button>
-                <Button x:Name="Remove_Year_Button" Content="Remove Year" Margin="5" Click="Remove_Year_Button_Click"></Button>
-                <Button x:Name="Edit_Year_Button" Content="Edit Year" Margin="5" Click="Edit_Year_Button_Click"></Button>
-            </StackPanel>
+            
+            <ListBox Name="fileexplorer" MinWidth="200" Grid.Row="0" Grid.Column="0">
+                <ListBoxItem>Hello</ListBoxItem>
+                <TreeView>
+                    <TreeViewItem>Hello</TreeViewItem>
+                </TreeView>
+            </ListBox>
+            <GridSplitter HorizontalAlignment="Stretch" Grid.Row="0"  Grid.Column="1"></GridSplitter>
+
+
+            <TabControl x:Name="YearTabControl" Grid.Column="2" Grid.Row="0">
+            </TabControl>
         </Grid>
-        
     </DockPanel>
    
 

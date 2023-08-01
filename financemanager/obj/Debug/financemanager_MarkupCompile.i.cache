@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Dokumente\GitHub\financemanager\financemanager\obj\Debug\
+C:\Users\matth\Documents\GitHub\financemanager\financemanager\obj\Debug\
 financemanager
 none
 false
 DEBUG;TRACE
-E:\Dokumente\GitHub\financemanager\financemanager\App.xaml
-21001766758
+C:\Users\matth\Documents\GitHub\financemanager\financemanager\App.xaml
+2656903340
 
-71838136865
+7-153205138
 13-1505183044
-ItemDialog.xaml;MainWindow.xaml;
+MainWindow.xaml;ClosableTab.xaml;
 
 True
 

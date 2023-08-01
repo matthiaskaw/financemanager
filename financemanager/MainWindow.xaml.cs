@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace financemanager
 {
     /// <summary>
@@ -23,24 +24,9 @@ namespace financemanager
         public MainWindow()
         {
             InitializeComponent();
-        }
+            }
 
-        private void Add_Year_Button_Click(object sender, RoutedEventArgs e)
-        {
-            AddItemDialog addYearDialog = new AddItemDialog();
-            addYearDialog.AddContent("hello");
-            addYearDialog.AddContent("Hello");
-            addYearDialog.Show();
-        }
-
-        private void Remove_Year_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Edit_Year_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
+
+    
 }
