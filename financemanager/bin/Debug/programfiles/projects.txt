@@ -1,0 +1,4 @@
+C:\Users\matth\Documents\GitHub\financemanager\financemanager\bin\Debug\programfiles\new\new.fpf
+C:\Users\matth\Documents\GitHub\financemanager\financemanager\bin\Debug\programfiles\new2\new2.fpf
+C:\Users\matth\Documents\GitHub\financemanager\financemanager\bin\Debug\programfiles\new3\new3.fpf
+C:\Users\matth\Documents\GitHub\financemanager\financemanager\bin\Debug\programfiles\new4\new4.fpf

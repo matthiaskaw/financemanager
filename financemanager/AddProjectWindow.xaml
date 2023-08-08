@@ -1,0 +1,24 @@
+﻿<Window x:Class="financemanager.AddProjectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:financemanager"
+        mc:Ignorable="d"
+        Title="Window1" Height="100" Width="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" Width="100" Height="20" Margin="5">Project:</TextBlock>
+        <TextBox x:Name="ProjectTextBox" Grid.Column="1" Grid.Row="0" Width="100" Height="20" Margin="5"></TextBox>
+        <Button x:Name="addButton" Click="addButton_Click" Grid.Column="0" Grid.Row="1" Width="100" Height="20" Margin="5">Add Project</Button>
+        <Button x:Name="cancelButton" Click="cancelButton_Click" Grid.Column="1" Grid.Row="1" Width="100" Height="20" Margin="5">Cancel</Button>
+    </Grid>
+</Window>

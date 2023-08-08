@@ -12,18 +12,18 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_New"/>
-                <MenuItem Header="_Open"/>
+                <MenuItem Header="_New" Click="on_new_click"/>
+                <MenuItem Header="_Open" Click="on_open_click"/>
                 <Separator/>
-                <MenuItem Header="_Save"/>
-                <MenuItem Header="Save _As"/>
+                <MenuItem Header="_Save" Click="on_save_click"/>
+                <MenuItem Header="Save _As" Click="on_save_as_click"/>
                 <Separator/>
-                <MenuItem Header="_Exit"/>
+                <MenuItem Header="_Exit" Click="on_exit_click"/>
             </MenuItem>
 
             <!-- Second menu item -->
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Cut"/>
+                <MenuItem Header="_Add Entry" Click="on_add_entry_click"/>
                 <MenuItem Header="_Copy"/>
                 <MenuItem Header="_Paste"/>
             </MenuItem>
@@ -44,14 +44,10 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
-            
-            <ListBox Name="fileexplorer" MinWidth="200" Grid.Row="0" Grid.Column="0">
-                <ListBoxItem>Hello</ListBoxItem>
-                <TreeView>
-                    <TreeViewItem>Hello</TreeViewItem>
-                </TreeView>
-            </ListBox>
+
+
+            <TreeView Name="balanceTree" MinWidth="200" Grid.Row="0" Grid.Column="0">
+            </TreeView>
             <GridSplitter HorizontalAlignment="Stretch" Grid.Row="0"  Grid.Column="1"></GridSplitter>
 
 

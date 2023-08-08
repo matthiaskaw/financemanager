@@ -40,18 +40,14 @@ namespace financemanager
 
     class CloseableTab : TabItem
     {
-        public CloseableTab() {
-            CloseButton closeButton = new CloseButton();
+        public CloseableTab(String headerName) {
             
-        }
-        public void SetHeader(UIElement header)
-        {
-            // Container for header controls
-            var dockPanel = new DockPanel();
-            dockPanel.Children.Add(header);
+            CloseButton closeButton = new CloseButton();
+            TextBlock headerText = new TextBlock();
 
-            // Close button to remove the tab
-            var closeButton = new CloseButton();
+            headerText.Text = headerName;
+            DockPanel dockPanel = new DockPanel();
+            dockPanel.Children.Add(headerText);
             closeButton.Click +=
                 (sender, e) =>
                 {
@@ -62,6 +58,7 @@ namespace financemanager
 
             // Set the header
             Header = dockPanel;
+
         }
     }
 }

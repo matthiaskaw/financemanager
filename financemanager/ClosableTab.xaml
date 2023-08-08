@@ -8,8 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
 
-    <Button x:Name="tableCloseButton" Background="Transparent" Click="tableCloseButton_Click" Margin="5,0,0,0">
-        <Path Data="M1,9 L9,1 M1,1 L9,9" Stroke="Black" StrokeThickness="2" />
+    <Button x:Name="tableCloseButton"
+            Background="Transparent"
+            Click="tableCloseButton_Click"
+            Margin="5,0,0,0"
+            Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+
+        <Path Data="M1,9 L9,1 M1,1 L9,9" Stroke="Black" StrokeThickness="2"></Path>
     </Button>
             
 </UserControl>
