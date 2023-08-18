@@ -26,8 +26,6 @@ namespace financemanager
         {
             InitializeComponent();
         }
-
-
         private void tableCloseButton_Click(object sender, RoutedEventArgs e)
         {
             if (Click != null)

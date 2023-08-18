@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\matth\Documents\GitHub\financemanager\financemanager\App.xaml
-42091555522
+5-1773074422
 
-9763817078
+10-1778636991
 14-1290796308
-MainWindow.xaml;ClosableTab.xaml;AddProjectWindow.xaml;OpenProjectsWindow.xaml;
+AddEntryWindow.xaml;MainWindow.xaml;ClosableTab.xaml;AddProjectWindow.xaml;OpenProjectsWindow.xaml;
 
-False
+True
 

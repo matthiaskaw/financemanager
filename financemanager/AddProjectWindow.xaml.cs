@@ -23,6 +23,7 @@ namespace financemanager
         public AddProjectWindow()
         {
             InitializeComponent();
+            
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)

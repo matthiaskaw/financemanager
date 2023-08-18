@@ -24,6 +24,10 @@ namespace financemanager
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        static string programfiledirectory = System.IO.Path.Combine(AppContext.BaseDirectory, "programfiles");
+        static string projectfiles = System.IO.Path.Combine(programfiledirectory, "projects.txt");
+        static List<string> entrylist = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
@@ -45,19 +49,28 @@ namespace financemanager
 
             if (File.Exists(path))
             {
+                TreeViewItem baseItem = new TreeViewItem();
+                baseItem.Header = System.IO.Path.GetFileNameWithoutExtension(path);
+                balanceTree.Items.Add(baseItem);
                 string[] content = File.ReadAllLines(path);
-
+                Console.WriteLine("Length of 'content' (loadProject): " + content.Length);
+                if(content.Length == 0) { return; }
+                foreach (string i in content) {
+                    TreeViewItem newItem = new TreeViewItem();
+                    newItem.Header = System.IO.Path.GetFileNameWithoutExtension(i);
+                    baseItem.Items.Add(newItem);
+                }
             }
             else {
                 System.Windows.Forms.MessageBox.Show($"{path} does not exist! Cannot load file", "File not found!");
                 return;
             }
-
-            
-
         }
-        static string programfiledirectory = System.IO.Path.Combine(AppContext.BaseDirectory, "programfiles");
-        static string projectfiles = System.IO.Path.Combine(programfiledirectory, "projects.txt");
+
+        private void createEntryFile(string name, string extension) { }
+
+        
+        
         //EVENT HANDLER
 
         private void on_new_click(object sender, EventArgs e)
@@ -103,11 +116,10 @@ namespace financemanager
             
         }
         private void on_open_click(object sender, RoutedEventArgs e)
-        {
+        {   
             List<string> projects = new List<string>();
             foreach (string i in Directory.GetDirectories(programfiledirectory))
             {
-                Console.WriteLine(i);
                 projects.Add(System.IO.Path.GetFileName(i));
             }
             OpenProjectsWindow openDlg = new OpenProjectsWindow(projects);
@@ -117,7 +129,8 @@ namespace financemanager
             {
                 string projectname = args.arg;
                 if (Directory.Exists(System.IO.Path.Combine(programfiledirectory, projectname)))
-                { 
+                {
+                    balanceTree.Items.Clear();
                     string path = System.IO.Path.Combine(programfiledirectory, projectname);
                     string[] fpffile = Directory.GetFiles(path, "*.fpf");
                     Console.WriteLine(fpffile[0]);
@@ -144,8 +157,77 @@ namespace financemanager
         private void on_add_entry_click(object sender, RoutedEventArgs e)
         {
 
+            AddEntryWindow addEntryWindow = new AddEntryWindow();
+            addEntryWindow.Show();
+            addEntryWindow.AddEntryEvent += (s, eventargs) => {
+                string header = eventargs.arg[0];
+                TreeViewItem newItem = new TreeViewItem();
+                newItem.Header = header;
+                newItem.MouseDoubleClick += openTab;
+                TreeViewItem parentItem = (TreeViewItem)balanceTree.Items[0];
+
+                parentItem.Items.Add(newItem);
+                parentItem.ExpandSubtree();
+            };
+        }
+
+        private void openTab(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                TreeViewItem newItem = (TreeViewItem)sender;
+                string headername = newItem.Header.ToString();
+                CloseableTab newtab = new CloseableTab(headername);
+                YearTabControl.Items.Add(newtab);
+
+
+            }
+            catch (InvalidCastException ex)
+            {   
+                System.Windows.Forms.MessageBox.Show("Invalid Cast Exception", "Exception throwed!");
+            }
+                
+         
+        }
+
+        private void on_load_entry_click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog fileDialog = new System.Windows.Forms.OpenFileDialog();
+            fileDialog.Filter = "CSV | *.csv";
+            fileDialog.InitialDirectory = "C://";
+
+            if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                Console.WriteLine("File Extension: " + System.IO.Path.GetExtension(fileDialog.FileName));
+
+                string[] content = (string[])File.ReadAllLines(fileDialog.FileName);
+                TreeViewItem parentItem = (TreeViewItem)balanceTree.Items[0];
+                TreeViewItem newItem = new TreeViewItem();
+                newItem.Header = System.IO.Path.GetFileNameWithoutExtension(fileDialog.FileName);
+                parentItem.Items.Add(newItem);
+
+                if (System.IO.Path.GetExtension(fileDialog.FileName) == ".csv") {
+
+                    try
+                    {
+                        string[] header = content[0].Split(';');
+                        Console.WriteLine(header);
+                        Console.WriteLine(content[0]);
+                        
+                    }
+                    catch (IndexOutOfRangeException ex) {
+                        System.Windows.Forms.MessageBox.Show("Index out of range!", "Exception error");
+                    }
+                    
+                }
+
+            }
+        }
+
+        private void load_entry_to_tab(string path) {
+
+            string[] content = (string[])File.ReadLines(path);
+            
+
         }
     }
-
-    
 }

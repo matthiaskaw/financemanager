@@ -11,7 +11,7 @@
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
+            <MenuItem Header="_Project">
                 <MenuItem Header="_New" Click="on_new_click"/>
                 <MenuItem Header="_Open" Click="on_open_click"/>
                 <Separator/>
@@ -19,6 +19,11 @@
                 <MenuItem Header="Save _As" Click="on_save_as_click"/>
                 <Separator/>
                 <MenuItem Header="_Exit" Click="on_exit_click"/>
+            </MenuItem>
+            <MenuItem Header="_Entry">
+                <MenuItem Header="_Load _Entry" Click="on_load_entry_click"></MenuItem>
+                
+                
             </MenuItem>
 
             <!-- Second menu item -->

@@ -34,7 +34,7 @@ namespace financemanager
         {
             this.Close();
         }
-
+        
         private void selectButton_Click(object sender, RoutedEventArgs e)
         {
             object selecteditem = projectslistbox.SelectedItem;
@@ -42,7 +42,7 @@ namespace financemanager
             EventArgString eArg = new EventArgString();
             eArg.arg = selecteditem.ToString();
             OpenProjectEvent?.Invoke(this, eArg);
-
+            this.Close();
         }
     }
 }

@@ -11,4 +11,9 @@ namespace financemanager
     {
         public string arg { get; set; }
     }
+
+    public class EventArgStringList : EventArgs
+    {
+        public List<string> arg { get; set; }
+    }
 }
