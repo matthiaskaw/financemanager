@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Win32;
+using financemanager.Datatypes;
 
 
 namespace financemanager
@@ -27,11 +28,38 @@ namespace financemanager
 
         static string programfiledirectory = System.IO.Path.Combine(AppContext.BaseDirectory, "programfiles");
         static string projectfiles = System.IO.Path.Combine(programfiledirectory, "projects.txt");
-        static List<string> entrylist = new List<string>();
+        public string CurrentProject { get; set; }
+
+        private List<string> EntrySaveBufferList = new List<string>();
+
+        public void Add_Entry_To_Save_Buffer(string entryName, string fileFormat) {
+
+            Console.WriteLine("MainWindow Add_Entry_To_Save_Buffer(string entryName): entryName = " + entryName);
+            string entryPath = System.IO.Path.Combine(CurrentProject, entryName);
+            string entryFileName = System.IO.Path.ChangeExtension(entryPath, fileFormat);
+            if (System.IO.File.Exists(entryFileName)) {
+                System.Windows.Forms.MessageBox.Show("File already exists!");
+                return;
+            }
+
+            EntrySaveBufferList.Add(System.IO.Path.ChangeExtension(entryFileName, fileFormat));
+        }
+        
         public MainWindow()
         {
             InitializeComponent();
             setProgramFiles();
+            /*Date date1 = new Date();
+            Date date2 = new Date();
+            
+            date1.Day = 5;
+            date1.setMonth(2);
+            date1.setMonth(EMonth.April);
+            date1.Year = 1901;
+
+            Console.WriteLine(date1.toString());*/
+
+           
             
         }
 
@@ -53,13 +81,13 @@ namespace financemanager
                 baseItem.Header = System.IO.Path.GetFileNameWithoutExtension(path);
                 balanceTree.Items.Add(baseItem);
                 string[] content = File.ReadAllLines(path);
-                Console.WriteLine("Length of 'content' (loadProject): " + content.Length);
                 if(content.Length == 0) { return; }
                 foreach (string i in content) {
                     TreeViewItem newItem = new TreeViewItem();
                     newItem.Header = System.IO.Path.GetFileNameWithoutExtension(i);
                     baseItem.Items.Add(newItem);
                 }
+                
             }
             else {
                 System.Windows.Forms.MessageBox.Show($"{path} does not exist! Cannot load file", "File not found!");
@@ -95,6 +123,7 @@ namespace financemanager
                 else
                 {
                     System.IO.Directory.CreateDirectory(path);
+                    CurrentProject = path;
                     System.IO.File.CreateText(
                         System.IO.Path.ChangeExtension(System.IO.Path.Combine(path,
                         System.IO.Path.GetFileName(path)), ".fpf"));
@@ -131,9 +160,8 @@ namespace financemanager
                 if (Directory.Exists(System.IO.Path.Combine(programfiledirectory, projectname)))
                 {
                     balanceTree.Items.Clear();
-                    string path = System.IO.Path.Combine(programfiledirectory, projectname);
-                    string[] fpffile = Directory.GetFiles(path, "*.fpf");
-                    Console.WriteLine(fpffile[0]);
+                    CurrentProject = System.IO.Path.Combine(programfiledirectory, projectname);
+                    string[] fpffile = Directory.GetFiles(CurrentProject, "*.fpf");
                     loadProject(fpffile[0]);
                 }
                 else {
@@ -157,15 +185,18 @@ namespace financemanager
         private void on_add_entry_click(object sender, RoutedEventArgs e)
         {
 
+            if (string.IsNullOrEmpty(CurrentProject)) { return; }
+
             AddEntryWindow addEntryWindow = new AddEntryWindow();
             addEntryWindow.Show();
             addEntryWindow.AddEntryEvent += (s, eventargs) => {
+                
                 string header = eventargs.arg[0];
+                Add_Entry_To_Save_Buffer(eventargs.arg[0], eventargs.arg[1]);
                 TreeViewItem newItem = new TreeViewItem();
                 newItem.Header = header;
                 newItem.MouseDoubleClick += openTab;
                 TreeViewItem parentItem = (TreeViewItem)balanceTree.Items[0];
-
                 parentItem.Items.Add(newItem);
                 parentItem.ExpandSubtree();
             };
@@ -229,5 +260,11 @@ namespace financemanager
             
 
         }
+
+        private void add_entry_to_project(string path) {
+            
+        }
+
+       
     }
 }
