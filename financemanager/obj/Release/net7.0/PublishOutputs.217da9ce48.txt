@@ -1,0 +1,7 @@
+E:\Software\Git\financemanager\financemanager\bin\Release\net7.0\publish\financemanager.exe
+E:\Software\Git\financemanager\financemanager\bin\Release\net7.0\publish\appsettings.Development.json
+E:\Software\Git\financemanager\financemanager\bin\Release\net7.0\publish\appsettings.json
+E:\Software\Git\financemanager\financemanager\bin\Release\net7.0\publish\financemanager.dll
+E:\Software\Git\financemanager\financemanager\bin\Release\net7.0\publish\financemanager.deps.json
+E:\Software\Git\financemanager\financemanager\bin\Release\net7.0\publish\financemanager.runtimeconfig.json
+E:\Software\Git\financemanager\financemanager\bin\Release\net7.0\publish\financemanager.pdb

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "D7hk/kbHPNNVuFqvz+NieQbEk5DY6XJrOsw0tokt/ETqLoW9PZVIfolDDLAdzT+T51krrkC+j0lx4nE7WNQ2dA==",
+  "success": true,
+  "projectFilePath": "E:\\Software\\Git\\financemanager\\financemanager\\financemanager.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-arm\\7.0.11\\microsoft.netcore.app.runtime.linux-arm.7.0.11.nupkg.sha512",
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-arm\\7.0.11\\microsoft.aspnetcore.app.runtime.linux-arm.7.0.11.nupkg.sha512",
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.netcore.app.host.linux-arm\\7.0.11\\microsoft.netcore.app.host.linux-arm.7.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}
